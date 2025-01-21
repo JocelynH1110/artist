@@ -3,9 +3,9 @@ defmodule Artist.Repo.Migrations.CreatePosts do
 
   def change do
     create table(:posts) do
-      add :title, :string
+      add :title, :string, not null
       add :content, :text
-      add :published_at, :naive_datetime
+      add :published_at, :utc_datetime
       add :shooting_date, :date
 
       timestamps(type: :utc_datetime)
