@@ -16,6 +16,7 @@ defmodule ArtistWeb.Router do
 
   scope "/", ArtistWeb do
     pipe_through :browser
+    resources "/posts", PostController
 
     get "/", PageController, :home
   end

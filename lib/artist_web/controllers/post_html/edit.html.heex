@@ -1,0 +1,7 @@
+<.header>
+  編輯文章_{@post.title}
+</.header>
+
+<.post_form changeset={@changeset} action={~p"/posts/#{@post}"} />
+
+<.back navigate={~p"/posts"}>回上一頁</.back>
