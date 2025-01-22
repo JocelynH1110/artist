@@ -16,10 +16,10 @@ defmodule ArtistWeb.Router do
 
   scope "/", ArtistWeb do
     pipe_through :browser
-    get "/overviews", OverviewController, :index
-    resources "/posts", PostController
 
-    get "/", PageController, :home
+    get "/", OverviewController, :index
+    get "/post/:slug", OverviewController, :show
+    resources "/admin/posts", PostController
   end
 
   # Other scopes may use custom stacks.

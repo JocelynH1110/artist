@@ -1,18 +1,17 @@
 <.header>
-  Post {@post.id}
-  <:subtitle>This is a post record from your database.</:subtitle>
+  {@post.title}
   <:actions>
     <.link href={~p"/posts/#{@post}/edit"}>
-      <.button>Edit post</.button>
+      <.button>編輯</.button>
     </.link>
   </:actions>
 </.header>
 
 <.list>
-  <:item title="title">{@post.title}</:item>
-  <:item title="Content">{@post.content}</:item>
-  <:item title="Published at">{@post.published_at}</:item>
-  <:item title="Shooting date">{@post.shooting_date}</:item>
+  <:item title="標題">{@post.title}</:item>
+  <:item title="內容">{@post.content}</:item>
+  <:item title="發布日">{@post.published_at}</:item>
+  <:item title="拍攝日">{@post.shooting_date}</:item>
 </.list>
 
-<.back navigate={~p"/posts"}>Back to posts</.back>
+<.back navigate={~p"/posts"}>回上一頁</.back>

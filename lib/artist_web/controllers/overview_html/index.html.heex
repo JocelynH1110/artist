@@ -1,1 +1,9 @@
-<h1>顯示所有的文章</h1>
+<.header>
+  作品集
+</.header>
+
+<%= for post <- @posts do %>
+  <.link navigate={~p"/post/#{post}"}>
+    {post.shooting_date}&nbsp;&nbsp;&nbsp{post.title}<br />
+  </.link>
+<% end %>
