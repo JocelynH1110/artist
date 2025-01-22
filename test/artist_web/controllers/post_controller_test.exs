@@ -19,31 +19,31 @@ defmodule ArtistWeb.PostControllerTest do
 
   describe "index" do
     test "lists all posts", %{conn: conn} do
-      conn = get(conn, ~p"/posts")
+      conn = get(conn, ~p"/admin/posts")
       assert html_response(conn, 200) =~ "Listing Posts"
     end
   end
 
   describe "new post" do
     test "renders form", %{conn: conn} do
-      conn = get(conn, ~p"/posts/new")
+      conn = get(conn, ~p"/admin/posts/new")
       assert html_response(conn, 200) =~ "New Post"
     end
   end
 
   describe "create post" do
     test "redirects to show when data is valid", %{conn: conn} do
-      conn = post(conn, ~p"/posts", post: @create_attrs)
+      conn = post(conn, ~p"/admin/posts", post: @create_attrs)
 
       assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == ~p"/posts/#{id}"
+      assert redirected_to(conn) == ~p"/admin/posts/#{id}"
 
-      conn = get(conn, ~p"/posts/#{id}")
+      conn = get(conn, ~p"/admin/posts/#{id}")
       assert html_response(conn, 200) =~ "Post #{id}"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, ~p"/posts", post: @invalid_attrs)
+      conn = post(conn, ~p"/admin/posts", post: @invalid_attrs)
       assert html_response(conn, 200) =~ "New Post"
     end
   end
@@ -52,7 +52,7 @@ defmodule ArtistWeb.PostControllerTest do
     setup [:create_post]
 
     test "renders form for editing chosen post", %{conn: conn, post: post} do
-      conn = get(conn, ~p"/posts/#{post}/edit")
+      conn = get(conn, ~p"/admin/posts/#{post}/edit")
       assert html_response(conn, 200) =~ "Edit Post"
     end
   end
@@ -61,15 +61,15 @@ defmodule ArtistWeb.PostControllerTest do
     setup [:create_post]
 
     test "redirects when data is valid", %{conn: conn, post: post} do
-      conn = put(conn, ~p"/posts/#{post}", post: @update_attrs)
-      assert redirected_to(conn) == ~p"/posts/#{post}"
+      conn = put(conn, ~p"/admin/posts/#{post}", post: @update_attrs)
+      assert redirected_to(conn) == ~p"/admin/posts/#{post}"
 
-      conn = get(conn, ~p"/posts/#{post}")
+      conn = get(conn, ~p"/admin/posts/#{post}")
       assert html_response(conn, 200) =~ "some updated title"
     end
 
     test "renders errors when data is invalid", %{conn: conn, post: post} do
-      conn = put(conn, ~p"/posts/#{post}", post: @invalid_attrs)
+      conn = put(conn, ~p"/admin/posts/#{post}", post: @invalid_attrs)
       assert html_response(conn, 200) =~ "Edit Post"
     end
   end
@@ -78,11 +78,11 @@ defmodule ArtistWeb.PostControllerTest do
     setup [:create_post]
 
     test "deletes chosen post", %{conn: conn, post: post} do
-      conn = delete(conn, ~p"/posts/#{post}")
-      assert redirected_to(conn) == ~p"/posts"
+      conn = delete(conn, ~p"/admin/posts/#{post}")
+      assert redirected_to(conn) == ~p"/admin/posts"
 
       assert_error_sent 404, fn ->
-        get(conn, ~p"/posts/#{post}")
+        get(conn, ~p"/admin/posts/#{post}")
       end
     end
   end

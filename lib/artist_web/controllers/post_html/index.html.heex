@@ -1,25 +1,25 @@
 <.header>
   文章總覽
   <:actions>
-    <.link href={~p"/posts/new"}>
+    <.link href={~p"/admin/posts/new"}>
       <.button>新增</.button>
     </.link>
   </:actions>
 </.header>
 
-<.table id="posts" rows={@posts} row_click={&JS.navigate(~p"/posts/#{&1}")}>
+<.table id="posts" rows={@posts} row_click={&JS.navigate(~p"/admin/posts/#{&1}")}>
   <:col :let={post} label="標題">{post.title}</:col>
   <:col :let={post} label="內容">{post.content}</:col>
   <:col :let={post} label="發布日">{post.published_at}</:col>
   <:col :let={post} label="拍攝日">{post.shooting_date}</:col>
   <:action :let={post}>
     <div class="sr-only">
-      <.link navigate={~p"/posts/#{post}"}>Show</.link>
+      <.link navigate={~p"/admin/posts/#{post}"}>Show</.link>
     </div>
-    <.link navigate={~p"/posts/#{post}/edit"}>編輯</.link>
+    <.link navigate={~p"/admin/posts/#{post}/edit"}>編輯</.link>
   </:action>
   <:action :let={post}>
-    <.link href={~p"/posts/#{post}"} method="delete" data-confirm="確定要刪除嗎?">
+    <.link href={~p"/admin/posts/#{post}"} method="delete" data-confirm="確定要刪除嗎?">
       刪除
     </.link>
   </:action>
