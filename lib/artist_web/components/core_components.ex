@@ -272,6 +272,7 @@ defmodule ArtistWeb.CoreComponents do
   attr :name, :any
   attr :label, :string, default: nil
   attr :value, :any
+  attr :class, :string, default: nil
 
   attr :type, :string,
     default: "text",
@@ -356,8 +357,9 @@ defmodule ArtistWeb.CoreComponents do
         name={@name}
         class={[
           "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6 min-h-[6rem]",
-          @errors == [] && "border-zinc-300 focus:border-zinc-400",
-          @errors != [] && "border-rose-400 focus:border-rose-400"
+          @errors == [] && "border-zinc-500 focus:border-zinc-400",
+          @errors != [] && "border-rose-400 focus:border-rose-400",
+          @class
         ]}
         {@rest}
       >{Phoenix.HTML.Form.normalize_value("textarea", @value)}</textarea>
@@ -379,7 +381,8 @@ defmodule ArtistWeb.CoreComponents do
         class={[
           "mt-1 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
           @errors == [] && "border-zinc-500 focus:border-zinc-600",
-          @errors != [] && "border-rose-400 focus:border-rose-400"
+          @errors != [] && "border-rose-400 focus:border-rose-400",
+          @class
         ]}
         {@rest}
       />
@@ -531,6 +534,7 @@ defmodule ArtistWeb.CoreComponents do
   """
   slot :item, required: true do
     attr :title, :string, required: true
+    attr :class, :string
   end
 
   def list(assigns) do
@@ -539,7 +543,7 @@ defmodule ArtistWeb.CoreComponents do
       <dl class="-my-4 divide-y divide-zinc-100">
         <div :for={item <- @item} class="flex gap-4 py-4 text-sm leading-6 sm:gap-8">
           <dt class="w-1/4 flex-none text-zinc-500">{item.title}</dt>
-          <dd class="text-zinc-700">{render_slot(item)}</dd>
+          <dd class={["text-zinc-700", Map.get(item, :class)]}>{render_slot(item)}</dd>
         </div>
       </dl>
     </div>
