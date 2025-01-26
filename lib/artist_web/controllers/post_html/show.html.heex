@@ -1,7 +1,7 @@
 <.header>
   {@post.title}
   <:actions>
-    <.link href={~p"/admin/posts/#{@post}/edit"}>
+    <.link href={~p"/admin/posts/#{@post.id}/edit"}>
       <.button>編輯</.button>
     </.link>
   </:actions>
@@ -12,6 +12,7 @@
   <:item title="內容">{@post.content}</:item>
   <:item title="發布日">{@post.published_at}</:item>
   <:item title="拍攝日">{@post.shooting_date}</:item>
+  <:item title="slug">{@post.slug}</:item>
 </.list>
 
 <.back navigate={~p"/admin/posts"}>回上一頁</.back>

@@ -9,6 +9,13 @@ defmodule Artist.Posts do
   alias Artist.Posts.Post
 
   @doc """
+   依據 slug 找文章
+  """
+  def get_post_by_slug!(slug) do
+    Repo.get_by!(Post, slug: slug)
+  end
+
+  @doc """
   Returns the list of posts.
 
   ## Examples

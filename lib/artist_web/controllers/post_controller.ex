@@ -19,7 +19,7 @@ defmodule ArtistWeb.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: ~p"/admin/posts/#{post}")
+        |> redirect(to: ~p"/admin/posts/#{post.id}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, :new, changeset: changeset)
@@ -44,7 +44,7 @@ defmodule ArtistWeb.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post updated successfully.")
-        |> redirect(to: ~p"/admin/posts/#{post}")
+        |> redirect(to: ~p"/admin/posts/#{post.id}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, :edit, post: post, changeset: changeset)

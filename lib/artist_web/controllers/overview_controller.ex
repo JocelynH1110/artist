@@ -8,9 +8,9 @@ defmodule ArtistWeb.OverviewController do
     render(conn, :index, posts: posts)
   end
 
-  def show(conn, %{"slug" => id}) do
-    post = Posts.get_post!(id)
-    # post = Repo.get!(Posts, id)
+  def show(conn, %{"slug" => slug}) do
+    post = Posts.get_post_by_slug!(slug)
+
     render(conn, :show, post: post)
   end
 end

@@ -3,9 +3,10 @@
     Oops, something went wrong! Please check the errors below.
   </.error>
   <.input field={f[:title]} type="text" label="標題" />
-  <.input field={f[:content]} type="text" label="內容" />
+  <.input field={f[:content]} type="textarea" label="內容" />
   <.input field={f[:published_at]} type="datetime-local" label="發布時間" />
   <.input field={f[:shooting_date]} type="date" label="拍攝時間" />
+  <.input field={f[:slug]} type="text" label="slug" />
   <:actions>
     <.button>儲存</.button>
   </:actions>
