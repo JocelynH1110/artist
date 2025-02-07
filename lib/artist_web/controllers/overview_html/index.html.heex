@@ -1,9 +1,32 @@
-<.header class="my-4 border-b-4 border-amber-600">
-  <h1 class="text-xl font-bold text-amber-800">作品集</h1>
+<div class="flex justify-between">
+  <div>
+    <h1 class="text-7xl font-extrabold text-justify text-[#655]">Hello World</h1>
+    <ul class="list-disc list-inside text-sm/7 text-xl text-[#655]">
+      <li>Now this is a story all about how, my life got flipped-turned upside down</li>
+      <li>Now this is a story all about how, my life got flipped-turned upside down</li>
+      <li>Now this is a story all about how, my life got flipped-turned upside down</li>
+    </ul>
+  </div>
+  <div>
+    <a href="/">
+      <img src={~p"/images/logo.svg"} width="100" />
+    </a>
+  </div>
+</div>
+<.header class="my-3 border-b-4 border-[#655]">
+  <h1 class="text-xl font-bold text-[#655] ">關於我</h1>
+</.header>
+<.header class="my-4 border-b-4 border-[#655]">
+  <h1 id="portfolio" class="text-xl font-bold text-[#655]">作品集</h1>
+  <ul class="text-gray-500 mt-1">
+    <a href="#portfolio" class="px-2 rounded-full hover:bg-white">平面</a>
+    <a href="#portfolio" class="px-2 rounded-full hover:bg-white">電視</a>
+    <a href="#portfolio" class="px-2 rounded-full hover:bg-white">電影</a>
+  </ul>
 </.header>
 
 <%= for post <- @posts do %>
-  <.link navigate={~p"/post/#{post}"}>
+  <.link class="text-[#655]" navigate={~p"/post/#{post}"}>
     {post.shooting_date}&nbsp;&nbsp;&nbsp{post.title}<br />
   </.link>
 <% end %>
