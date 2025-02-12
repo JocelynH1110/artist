@@ -3,8 +3,7 @@ defmodule ArtistWeb.OverviewController do
   use ArtistWeb, :controller
 
   def index(conn, _params) do
-    posts = Posts.list_posts()
-    render(conn, :index, posts: posts)
+    render(conn, :index)
   end
 
   def show(conn, %{"slug" => slug}) do
@@ -17,6 +16,7 @@ defmodule ArtistWeb.OverviewController do
   end
 
   def portfolio(conn, _params) do
-    render(conn, :portfolio)
+    posts = Posts.list_posts()
+    render(conn, :portfolio, posts: posts)
   end
 end

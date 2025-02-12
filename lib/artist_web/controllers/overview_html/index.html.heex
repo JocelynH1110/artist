@@ -1,6 +1,6 @@
 <div class="flex justify-between">
   <div>
-    <h1 class="text-7xl font-extrabold text-justify text-[#655]">Hello World</h1>
+    <h1 class="text-7xl font-extrabold text-justify text-[#655]">Hanna Studio</h1>
     <ul class="list-disc list-inside text-sm/7 text-xl text-[#655]">
       <li>Now this is a story all about how, my life got flipped-turned upside down</li>
       <li>Now this is a story all about how, my life got flipped-turned upside down</li>
@@ -27,9 +27,3 @@
     <a href="#portfolio" class="px-2 rounded-full hover:bg-white">電影</a>
   </ul>
 </.header>
-
-<%= for post <- @posts do %>
-  <.link class="text-[#655]" navigate={~p"/post/#{post}"}>
-    {post.shooting_date}&nbsp;&nbsp;&nbsp{post.title}<br />
-  </.link>
-<% end %>
