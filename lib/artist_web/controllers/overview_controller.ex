@@ -11,4 +11,12 @@ defmodule ArtistWeb.OverviewController do
     post = Posts.get_post_by_slug!(slug)
     render(conn, :show, post: post)
   end
+
+  def contact(conn, _params) do
+    render(conn, :contact)
+  end
+
+  def portfolio(conn, _params) do
+    render(conn, :portfolio)
+  end
 end

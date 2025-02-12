@@ -19,6 +19,8 @@ defmodule ArtistWeb.Router do
 
     get "/", OverviewController, :index
     get "/post/:slug", OverviewController, :show
+    get "/portfolio", OverviewController, :portfolio
+    get "/contact", OverviewController, :contact
     resources "/admin/posts", PostController
   end
 

@@ -10,6 +10,7 @@ defmodule Artist.Posts.Post do
     field :published_at, :naive_datetime
     field :shooting_date, :date
     field :slug, :string
+    field :photo, :string, default: ""
 
     timestamps(type: :utc_datetime)
   end

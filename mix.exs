@@ -59,7 +59,8 @@ defmodule Artist.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:earmark, "~> 1.4"},
-      {:slugify, "~> 1.3"}
+      {:slugify, "~> 1.3"},
+      {:arc, "~> 0.11.0"}
     ]
   end
 
