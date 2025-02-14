@@ -14,6 +14,11 @@ defmodule ArtistWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/admin", ArtistWeb do
+    pipe_through :browser
+    resources "/posts", PostController
+  end
+
   scope "/", ArtistWeb do
     pipe_through :browser
 
@@ -21,7 +26,6 @@ defmodule ArtistWeb.Router do
     get "/post/:slug", OverviewController, :show
     get "/portfolio", OverviewController, :portfolio
     get "/contact", OverviewController, :contact
-    resources "/admin/posts", PostController
   end
 
   # Other scopes may use custom stacks.

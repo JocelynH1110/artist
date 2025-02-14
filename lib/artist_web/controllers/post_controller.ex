@@ -1,6 +1,8 @@
 defmodule ArtistWeb.PostController do
   use ArtistWeb, :controller
 
+  plug :put_layout, html: {ArtistWeb.Layouts, :admin}
+
   alias Artist.Posts
   alias Artist.Posts.Post
 
