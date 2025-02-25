@@ -14,8 +14,8 @@ defmodule Artist.Categories.Category do
     category
     |> cast(attrs, [:title, :slug])
     |> validate_required([:title])
-    |> validate_format(:slug, ~r/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
     |> maybe_generate_slug()
+    |> validate_format(:slug, ~r/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
     |> unique_constraint(:slug)
   end
 

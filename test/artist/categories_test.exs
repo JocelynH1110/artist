@@ -46,12 +46,12 @@ defmodule ArtistWeb.CategoriesTest do
 
       update_attrs = %{
         title: "update title",
-        slug: "update slug"
+        slug: "update-slug"
       }
 
-      assert {ok, %Category{} = category} = Categories.update_category(category, update_attrs)
+      assert {:ok, %Category{} = category} = Categories.update_category(category, update_attrs)
       assert category.title == "update title"
-      assert category.slug == "update slug"
+      assert category.slug == "update-slug"
     end
 
     test "update_category/2 with invalid data returns error changeset" do
@@ -64,7 +64,7 @@ defmodule ArtistWeb.CategoriesTest do
     test "delete_category/1 deletes the category" do
       category = category_fixture()
 
-      assert {ok, %Category{}} = Categories.delete_category(category)
+      assert {:ok, %Category{}} = Categories.delete_category(category)
       assert_raise Ecto.NoResultsError, fn -> Categories.get_category!(category.id) end
     end
 
