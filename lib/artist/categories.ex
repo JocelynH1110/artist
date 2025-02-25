@@ -1,7 +1,5 @@
 defmodule Artist.Categories do
   import Ecto.Query, warn: false
-  alias Ecto.Repo
-  alias Ecto.Repo
   alias Artist.Repo
   alias Artist.Categories.Category
 
@@ -27,7 +25,7 @@ defmodule Artist.Categories do
   end
 
   @doc """
-  更新 category
+  更新 category,(%Category{} = category)此參數用來確保 category 是 struct 
   """
   def update_category(%Category{} = category, attrs) do
     category
