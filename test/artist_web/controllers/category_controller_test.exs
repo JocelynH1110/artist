@@ -16,7 +16,7 @@ defmodule ArtistWeb.CategoryControllerTest do
   describe "index" do
     test "lists all notes", %{conn: conn} do
       conn = get(conn, ~p"/admin/categories")
-      assert html_response(conn, 200) =~ "Listing Categories"
+      assert html_response(conn, 200) =~ "分類總覽"
     end
   end
 end

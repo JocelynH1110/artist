@@ -6,4 +6,27 @@
     </.link>
   </:actions>
 </.header>
-<p>Listing Categories</p>
+
+<.table
+  id="categories"
+  rows={@categories}
+  row_click={&JS.navigate(~p"/admin/categories/#{&1.id}")}
+>
+  <:col :let={category} label="標題">{category.title}</:col>
+  <:col :let={category} label="slug">{category.slug}</:col>
+  <:action :let={category}>
+    <div class="sr-only">
+      <.link navigate={~p"/admin/categories/#{category.id}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/admin/categories/#{category.id}/edit"}>編輯</.link>
+  </:action>
+  <:action :let={category}>
+    <.link
+      href={~p"/admin/categories/#{category.id}"}
+      method="delete"
+      data-confirm="確定要刪除嗎?"
+    >
+      刪除
+    </.link>
+  </:action>
+</.table>
