@@ -17,6 +17,7 @@ defmodule ArtistWeb.Router do
   scope "/admin", ArtistWeb do
     pipe_through :browser
     resources "/posts", PostController
+    resources "/categories", CategoryController
   end
 
   scope "/", ArtistWeb do
