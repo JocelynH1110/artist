@@ -27,4 +27,10 @@ defmodule ArtistWeb.CategoryController do
         render(conn, :new, changeset: changeset)
     end
   end
+
+  def edit(conn, %{"id" => id}) do
+    category = Categories.get_category!(id)
+    changeset = Categories.change_category(category)
+    render(conn, :edit, category: category, changeset: changeset)
+  end
 end
