@@ -1,0 +1,15 @@
+<.header>
+  {@category.title}
+  <:actions>
+    <.link href={~p"/admin/categories/#{@category.id}/edit"}>
+      <.button>編輯</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="標題" class="font-mono">{@category.title}</:item>
+  <:item title="slug" class="font-mono">{@category.slug}</:item>
+</.list>
+
+<.back navigate={~p"/admin/categories"}>回上一頁</.back>
