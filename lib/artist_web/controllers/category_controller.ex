@@ -52,4 +52,13 @@ defmodule ArtistWeb.CategoryController do
     category = Categories.get_category!(id)
     render(conn, :show, category: category)
   end
+
+  def delete(conn, %{"id" => id}) do
+    category = Categories.get_category!(id)
+    {:ok, _category} = Categories.delete_category(category)
+
+    conn
+    |> put_flash(:info, "分類刪除成功")
+    |> redirect(to: ~p"/admin/categories")
+  end
 end
