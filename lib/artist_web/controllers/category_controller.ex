@@ -18,10 +18,10 @@ defmodule ArtistWeb.CategoryController do
 
   def create(conn, %{"category" => category_params}) do
     case Categories.create_category(category_params) do
-      {:ok, _category} ->
+      {:ok, category} ->
         conn
         |> put_flash(:info, "分類建立完成")
-        |> redirect(to: ~p"/admin/categories/")
+        |> redirect(to: ~p"/admin/categories/#{category.id}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, :new, changeset: changeset)
@@ -38,10 +38,10 @@ defmodule ArtistWeb.CategoryController do
     category = Categories.get_category!(id)
 
     case Categories.update_category(category, category_params) do
-      {:ok, _category} ->
+      {:ok, category} ->
         conn
         |> put_flash(:info, "分類更新成功")
-        |> redirect(to: ~p"/admin/categories/")
+        |> redirect(to: ~p"/admin/categories/#{category.id}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, :edit, category: category, changeset: changeset)
