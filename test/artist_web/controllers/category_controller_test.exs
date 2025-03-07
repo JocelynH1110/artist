@@ -35,7 +35,7 @@ defmodule ArtistWeb.CategoryControllerTest do
       assert redirected_to(conn) == ~p"/admin/categories/#{id}"
 
       conn = get(conn, ~p"/admin/categories/#{id}")
-      assert html_response(conn, 200) =~ "Category #{id}"
+      assert html_response(conn, 200) =~ @create_attrs.title
     end
 
     test "renders errors when data is invalid", %{conn: conn} do

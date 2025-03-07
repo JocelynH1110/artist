@@ -3,7 +3,13 @@
     有地方出問題，請確認以下的錯誤訊息
   </.error>
   <.input field={f[:title]} type="text" label="標題" class="font-mono" />
-  <.input field={f[:title]} type="text" label="slug" class="font-mono" />
+  <.input
+    field={f[:slug]}
+    type="text"
+    label="slug"
+    class="font-mono"
+    readonly={@controller_action == :edit}
+  />
   <:actions>
     <.button>儲存</.button>
   </:actions>

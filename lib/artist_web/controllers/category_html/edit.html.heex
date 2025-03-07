@@ -2,6 +2,10 @@
   編輯分類 {@category.title}
 </.header>
 
-<.category_form changeset={@changeset} action={~p"/admin/categories/#{@category.id}"} />
+<.category_form
+  changeset={@changeset}
+  action={~p"/admin/categories/#{@category.id}"}
+  controller_action={:edit}
+/>
 
 <.back navigate={~p"/admin/categories"}>回上一頁</.back>
