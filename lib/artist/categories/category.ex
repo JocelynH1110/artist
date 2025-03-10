@@ -6,6 +6,9 @@ defmodule Artist.Categories.Category do
     field :title, :string
     field :slug, :string
 
+    has_many :post_categories, Artist.PostCategories.PostCategory
+    has_many :posts, through: [:post_categories, :post]
+
     timestamps(type: :utc_datetime)
   end
 

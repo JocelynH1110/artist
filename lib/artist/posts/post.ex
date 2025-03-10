@@ -12,6 +12,11 @@ defmodule Artist.Posts.Post do
     field :slug, :string
     field :photo, :string, default: ""
 
+    # 直接關聯到中間表
+    has_many :post_categories, Artist.PostCategories.PostCategory
+    # 通過中間表關聯到分類
+    has_many :categories, through: [:post_categories, :category]
+
     timestamps(type: :utc_datetime)
   end
 
