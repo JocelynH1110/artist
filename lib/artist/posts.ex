@@ -7,6 +7,8 @@ defmodule Artist.Posts do
   alias Artist.Repo
 
   alias Artist.Posts.Post
+  alias Artist.Categories.Category
+  alias Artist.PostCategories.PostCategory
 
   @doc """
    依據 slug 找文章
@@ -107,5 +109,40 @@ defmodule Artist.Posts do
   """
   def change_post(%Post{} = post, attrs \\ %{}) do
     Post.changeset(post, attrs)
+  end
+
+  # 其他 Post 相關函式
+  @doc """
+  Gets a post and all its related categories, with those categories sorted alphabetically by name.
+  """
+  def get_post_with_categories!(id) do
+    Post
+    |> Repo.get!(id)
+    |> Repo.preload(categories: from(c in Category, order_by: c.name))
+  end
+
+  @doc """
+  Add category to post
+  """
+  def add_category_to_post(%Post{} = post, %Category{} = category, attrs \\ %{}) do
+    %PostCategory{}
+    |> PostCategory.changeset(
+      Map.merge(attrs, %{
+        post_id: post.id,
+        category_id: category.id
+      })
+    )
+    |> Repo.insert()
+  end
+
+  def update_post_category(%PostCategory{} = post_category, attrs) do
+    post_category
+    |> PostCategory.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def remove_category_from_post(%Post{} = post, %Category{} = category) do
+    from(pc in PostCategory, where: pc.post_id == ^post.id and pc.category_id == ^category.id)
+    |> Repo.delete_all()
   end
 end

@@ -46,6 +46,13 @@ defmodule ArtistWeb.PostControllerTest do
       conn = post(conn, ~p"/admin/posts", post: @invalid_attrs)
       assert html_response(conn, 200) =~ "New Post"
     end
+
+    test "當給分類列表時會建立多對多關聯", %{conn: conn} do
+      [first, second] = [category_fixture(), category_fixture()]
+      params = @create_attrs |> Map.put(:category_ids, %{first.id => true, second.id => true})
+      conn = post(conn, ~p"/admin/posts", post: params)
+      # check that the post has two categories
+    end
   end
 
   describe "edit post" do

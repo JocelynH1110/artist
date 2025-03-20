@@ -14,5 +14,8 @@ defmodule Artist.PostCategories.PostCategory do
     post_categories
     |> cast(attrs, [:post_id, :category_id])
     |> validate_required([:post_id, :category_id])
+    |> unique_constraint([:post_id, :category_id])
+    |> foreign_key_constraint(:post_id)
+    |> foreign_key_constraint(:categort_id)
   end
 end
