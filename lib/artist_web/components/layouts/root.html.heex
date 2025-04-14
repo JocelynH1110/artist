@@ -10,8 +10,14 @@
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
+    <style>
+      body{
+            font-family:'sans-serif', 'Chocolate Classical Sans';
+            }
+          
+    </style>
   </head>
-  <body class="bg-[#f9ece4]">
+  <body class="bg-[#f9ece4] min-h-screen flex flex-col transition duration-300">
     {@inner_content}
   </body>
 </html>

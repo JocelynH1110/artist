@@ -1,6 +1,21 @@
-<header class="px-4 sm:px-6 lg:px-8" style="background:#D4B8B4">
-  <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
-    <div class="flex items-center gap-4"></div>
+<header
+  class="p-4 sm:px-6 lg:px-8 dark flex justify-between item-center"
+  style="background:#D4B8B4"
+>
+  <h1 class="text-3xl font-bold">後台管理</h1>
+  <div class="flex items-center gap-3">
+    <button
+      id="menuToggle"
+      class="md:hidden px-1 py-1 rounded-lg flex items-center gap-4 hover:bg-zinc-200"
+    >
+      🌓
+    </button>
+    <button
+      id="menuToggle"
+      class="md:hidden px-1 py-1 rounded-lg flex items-center gap-4 hover:bg-zinc-200"
+    >
+      ☰
+    </button>
     <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
       <a
         href="https://hexdocs.pm/phoenix/overview.html"
@@ -11,13 +26,29 @@
     </div>
   </div>
 </header>
-<main class="grid grid-cols-3 gap-4 px-4 py-20 sm:px-6 lg:px-8">
-  <div class="list-group font-medium bg-pink-200">
-    <.link href={~p"/admin/categories"}>分類總覽</.link>
-    <.link href={~p"/admin/posts"}>文章總覽</.link>
-  </div>
-  <div class="mx-auto max-w-2xl bg-orange-200">
-    <.flash_group flash={@flash} />
-    {@inner_content}
-  </div>
-</main>
+
+<div class="flex flex-1 relative">
+  <!-- sidebar -->
+  <aside class="fixed md:relative top-0 left-0 h-full w-64 bg-green dark:bg-gray-700 p-4 space-y-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40 rounded-3xl shadow-lg ">
+    <nav>
+      <ul class="space-y-2">
+        <li>
+          <a href={~p"/admin/categories"} class="block hover:bg-white rounded px-2 py-1">
+            分類總覽
+          </a>
+        </li>
+        <li>
+          <a href={~p"/admin/categories"} class="block hover:bg-white rounded px-2 py-1">文章總覽</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  
+<!-- main content-->
+  <main class="flex-1 p-8 bg-blue-300 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl bg-orange-200 w-full">
+      <.flash_group flash={@flash} />
+      {@inner_content}
+    </div>
+  </main>
+</div>
